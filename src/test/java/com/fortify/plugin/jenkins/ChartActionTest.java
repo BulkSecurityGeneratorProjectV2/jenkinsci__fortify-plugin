@@ -18,6 +18,7 @@ package com.fortify.plugin.jenkins;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.encoders.SunPNGEncoderAdapter;
@@ -44,7 +45,7 @@ public class ChartActionTest {
 		BufferedImage image = chart.createBufferedImage(400, 200);
 		SunPNGEncoderAdapter png = new SunPNGEncoderAdapter();
 
-		File tmp = File.createTempFile("test", ".png");
+		File tmp = Files.createTempFile("test", ".png").toFile();
 		FileOutputStream out = new FileOutputStream(tmp);
 		png.encode(image, out);
 

@@ -25,6 +25,7 @@ import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -312,7 +313,7 @@ public class FortifyClientTest {
 		InputStream in = null;
 		OutputStream out = null;
 		try {
-			File tmp = File.createTempFile("test", "." + FilenameUtils.getExtension(filename));
+			File tmp = Files.createTempFile("test", "." + FilenameUtils.getExtension(filename)).toFile();
 			tmp.deleteOnExit();
 			in = FortifyClientTest.class.getClassLoader().getResourceAsStream(filename);
 			out = new FileOutputStream(tmp);
